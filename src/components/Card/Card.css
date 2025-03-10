@@ -1,0 +1,37 @@
+.card {
+  position: absolute;
+  width: 100%;
+  height: 90%;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.card.active {
+  cursor: grab;
+}
+
+.card-image {
+  height: 70%;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-info {
+  padding: 20px;
+  height: 50%;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-info h2 {
+  margin: 0 0 10px 0;
+  color: #333;
+}
+
+.card-info p {
+  margin: 0;
+  color: #666;
+}

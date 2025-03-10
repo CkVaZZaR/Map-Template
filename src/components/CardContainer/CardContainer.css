@@ -1,0 +1,40 @@
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.cards-container {
+  flex: 1;
+  position: relative;
+  margin: 20px 0;
+}
+
+.slide-left {
+  animation: slideLeft 0.5s ease;
+}
+
+.slide-right {
+  animation: slideRight 0.5s ease;
+}
+
+@keyframes slideLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-150%);
+  }
+}
+
+@keyframes slideRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(150%);
+  }
+}

@@ -1,5 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
+import CardContainer from "../CardContainer/CardContainer";
 
 const HomeContainer = styled.div`
   display: flex;
@@ -14,9 +15,5 @@ const Title = styled.h1`
 `;
 
 export default function Home() {
-  return (
-    <HomeContainer>
-      <Title>Добро пожаловать!</Title>
-    </HomeContainer>
-  );
+  return <CardContainer />;
 }

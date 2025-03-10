@@ -1,7 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { FaClone, FaUser, FaCog } from 'react-icons/fa'; 
+import React from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { FaClone, FaUser, FaCog } from "react-icons/fa";
+import "./Footer.css";
 
 const FooterContainer = styled.footer`
   position: fixed;
@@ -23,27 +24,25 @@ const IconLink = styled(Link)`
   font-size: 1.5rem;
   transition: color 0.2s;
 
-  &:hover {
-    color: #007bff;
-  }
+  // &:hover {
+  //   color: #007bff;
+  // }
 `;
 
 export default function Footer() {
   return (
     <FooterContainer>
-
-      <IconLink to="/account"> 
+      <IconLink to='/account'>
         <FaUser />
       </IconLink>
 
-      <IconLink to="/">
+      <IconLink to='/'>
         <FaClone />
       </IconLink>
 
-      <IconLink to="/settings">
+      <IconLink to='/settings'>
         <FaCog />
       </IconLink>
-
     </FooterContainer>
   );
 }
