@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FaClone, FaUser, FaCog } from "react-icons/fa";
@@ -24,23 +24,38 @@ const IconLink = styled(Link)`
   font-size: 1.5rem;
   transition: color 0.2s;
 
-  // &:hover {
-  //   color: #007bff;
-  // }
+  &:hover {
+    // color: #007bff;
+    -webkit-tap-highlight-color: transparent;
+  }
 `;
 
 export default function Footer() {
+  const [tab, setTab] = useState("home");
+
   return (
     <FooterContainer>
-      <IconLink to='/account'>
+      <IconLink
+        onClick={(tab) => setTab("acc")}
+        className={tab === "acc" && "active"}
+        to='/account'
+      >
         <FaUser />
       </IconLink>
 
-      <IconLink to='/'>
+      <IconLink
+        onClick={(tab) => setTab("home")}
+        className={tab === "home" && "active"}
+        to='/'
+      >
         <FaClone />
       </IconLink>
 
-      <IconLink to='/settings'>
+      <IconLink
+        onClick={(tab) => setTab("settings")}
+        className={tab === "settings" && "active"}
+        to='/settings'
+      >
         <FaCog />
       </IconLink>
     </FooterContainer>

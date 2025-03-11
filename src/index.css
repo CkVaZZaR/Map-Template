@@ -1,5 +1,5 @@
 /* src/index.css */
-@import url('https://fonts.googleapis.com/css2?family=Inter&family=Roboto:wght@400;700&family=Titillium+Web&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Roboto:wght@400;700&family=Titillium+Web&display=swap");
 
 * {
   margin: 0;
@@ -8,7 +8,7 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .leaflet-container {
@@ -16,4 +16,16 @@ body {
   width: 100%;
   border-radius: 10px;
   margin-bottom: 1rem;
+}
+
+.confirmbtn {
+  margin: 1rem auto;
+}
+
+.centeralign {
+  text-align: center;
+}
+
+.leaflet-bottom .leaflet-control {
+  display: none !important;
 }

@@ -1,15 +1,16 @@
-import { useEffect, useRef, useState, useCallback } from 'react';
-import leaflet from 'leaflet';
-import 'leaflet/dist/leaflet.css';
-import styled from 'styled-components';
-import useLocalStorage from '../../hooks/useLocalStorage';
-import { debounce } from 'lodash';
+import { useEffect, useRef, useState, useCallback } from "react";
+import leaflet from "leaflet";
+import "leaflet/dist/leaflet.css";
+import styled from "styled-components";
+import useLocalStorage from "../../hooks/useLocalStorage";
+import { debounce } from "lodash";
 
 delete leaflet.Icon.Default.prototype._getIconUrl;
 leaflet.Icon.Default.mergeOptions({
-  iconRetinaUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png',
-  iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
-  shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
+  iconRetinaUrl:
+    "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png",
+  iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",
+  shadowUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png",
 });
 
 const Wrapper = styled.div`
@@ -17,8 +18,8 @@ const Wrapper = styled.div`
   display: grid;
   gap: 1.5rem;
   grid-template-columns: 1fr;
-  min-height: 400px; 
-  
+  min-height: 400px;
+
   @media (min-width: 768px) {
     grid-template-columns: minmax(300px, 1fr) 350px;
     min-height: auto;
@@ -33,22 +34,22 @@ const MapContainer = styled.div`
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: relative;
   min-height: 300px;
+  z-index: 0;
 `;
 
 const Sidebar = styled.div`
   order: 1;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
   padding: 1rem;
   padding-left: 1rem;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
-  min-height: 300px;
-  max-height: 500px;
-  
+  background: rgb(240, 240, 240);
+  gap: 1rem;
+
   @media (min-width: 768px) {
     order: 2;
     max-height: calc(100vh - 120px);
@@ -86,6 +87,7 @@ const SuggestionsList = styled.ul`
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   z-index: 1001;
   max-height: 300px;
+  height: 0px;
   overflow-y: auto;
 `;
 
@@ -135,7 +137,7 @@ const AddressText = styled.span`
   padding-right: 1rem;
   cursor: pointer;
   display: -webkit-box;
-  -webkit-line-clamp: ${props => (props.$expanded ? 'unset' : 2)};
+  -webkit-line-clamp: ${(props) => (props.$expanded ? "unset" : 2)};
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -158,7 +160,7 @@ const DeleteButton = styled.button`
 
   &::before,
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     width: 16px;
     height: 2px;
@@ -209,7 +211,6 @@ const LocateButton = styled.button`
   padding: 10px 15px;
   border-radius: 10px;
   cursor: pointer;
-  margin-bottom: 1rem;
   width: 100%;
   transition: background 0.2s;
 
@@ -220,20 +221,25 @@ const LocateButton = styled.button`
 
 export default function Map({ onMarkerAdd }) {
   const mapRef = useRef(null);
-  const [error, setError] = useState('');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [error, setError] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [expandedMarkerIndex, setExpandedMarkerIndex] = useState(-1);
   const markersLayerRef = useRef(leaflet.layerGroup());
-  
-  const [nearbyMarkers, setNearbyMarkers] = useLocalStorage('NEARBY_MARKERS', []);
+
+  const [nearbyMarkers, setNearbyMarkers] = useLocalStorage(
+    "NEARBY_MARKERS",
+    []
+  );
 
   // Инициализация карты
   useEffect(() => {
     if (!mapRef.current) {
-      mapRef.current = leaflet.map('map').setView([55.7558, 37.6176], 13);
-      leaflet.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mapRef.current);
+      mapRef.current = leaflet.map("map").setView([55.7558, 37.6176], 13);
+      leaflet
+        .tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png")
+        .addTo(mapRef.current);
       markersLayerRef.current.addTo(mapRef.current);
     }
 
@@ -262,7 +268,7 @@ export default function Map({ onMarkerAdd }) {
 
     const handleClick = async (e) => {
       if (nearbyMarkers.length >= 5) {
-        setError('Максимум 5 меток!');
+        setError("Максимум 5 меток!");
         return;
       }
 
@@ -274,13 +280,13 @@ export default function Map({ onMarkerAdd }) {
       onMarkerAdd(newMarker);
     };
 
-    mapRef.current.on('click', handleClick);
-    return () => mapRef.current?.off('click', handleClick);
+    mapRef.current.on("click", handleClick);
+    return () => mapRef.current?.off("click", handleClick);
   }, [nearbyMarkers, onMarkerAdd, setNearbyMarkers]);
 
   useEffect(() => {
     if (error) {
-      const timer = setTimeout(() => setError(''), 3000);
+      const timer = setTimeout(() => setError(""), 3000);
       return () => clearTimeout(timer);
     }
   }, [error]);
@@ -305,7 +311,9 @@ export default function Map({ onMarkerAdd }) {
       }
       try {
         const response = await fetch(
-          `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=5`
+          `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(
+            query
+          )}&limit=5`
         );
         const data = await response.json();
         setSuggestions(data);
@@ -332,7 +340,7 @@ export default function Map({ onMarkerAdd }) {
   const handleDeleteMarker = useCallback(
     (index) => {
       const newMarkers = nearbyMarkers.filter((_, i) => i !== index);
-      if (newMarkers.length < 5) setError('');
+      if (newMarkers.length < 5) setError("");
       setNearbyMarkers(newMarkers);
       setExpandedMarkerIndex(-1);
     },
@@ -341,30 +349,29 @@ export default function Map({ onMarkerAdd }) {
 
   const handleLocate = useCallback(async () => {
     if (!navigator.geolocation) {
-      setError('Геолокация не поддерживается вашим браузером');
+      setError("Геолокация не поддерживается вашим браузером");
       return;
     }
-  
+
     try {
       const position = await new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(resolve, reject, {
           enableHighAccuracy: true,
           timeout: 10000,
-          maximumAge: 0
+          maximumAge: 0,
         });
       });
-  
+
       const { latitude, longitude } = position.coords;
       mapRef.current?.setView([latitude, longitude], 16);
-  
     } catch (err) {
-      setError('Не удалось определить местоположение');
+      setError("Не удалось определить местоположение");
       console.error(err);
     }
   }, []);
 
   const toggleAddress = useCallback((index) => {
-    setExpandedMarkerIndex(prev => prev === index ? -1 : index);
+    setExpandedMarkerIndex((prev) => (prev === index ? -1 : index));
   }, []);
 
   return (
@@ -372,8 +379,8 @@ export default function Map({ onMarkerAdd }) {
       <div>
         <SearchBar>
           <SearchInput
-            type="text"
-            placeholder="Поиск адреса..."
+            type='text'
+            placeholder='Поиск адреса...'
             value={searchQuery}
             onChange={handleInputChange}
             onFocus={() => setIsSearchFocused(true)}
@@ -395,22 +402,20 @@ export default function Map({ onMarkerAdd }) {
             </SuggestionsList>
           )}
         </SearchBar>
-        
-        <MapContainer id="map" />
+
+        <MapContainer id='map' />
         {error && <ErrorMessage>⚠️ {error}</ErrorMessage>}
       </div>
 
       <Sidebar>
-        <h3 style={{ margin: '0 0 1rem', color: '#212121' }}>
+        <h3 style={{ margin: "0", color: "#212121" }}>
           Сохранённые места ({nearbyMarkers.length}/5)
         </h3>
-        <LocateButton onClick={handleLocate}>
-          Мое местоположение
-        </LocateButton>
+        <LocateButton onClick={handleLocate}>Мое местоположение</LocateButton>
         <MarkersList>
           {nearbyMarkers.map((marker, index) => (
             <MarkerItem key={index}>
-              <AddressText 
+              <AddressText
                 $expanded={expandedMarkerIndex === index}
                 onClick={() => toggleAddress(index)}
               >

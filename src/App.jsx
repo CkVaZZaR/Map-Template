@@ -7,6 +7,7 @@ import Map from "./components/Map/Map";
 import Account from "./components/Account/Account"; // Добавляем компонент аккаунта
 import Settings from "./components/Settings/Settings"; // Добавляем компонент настроек
 import Header from "./components/Header/Header";
+import Profile from "./components/Profile/Profile";
 
 const Container = styled.div`
   padding: 1rem;
@@ -20,8 +21,8 @@ const Container = styled.div`
 
 const MapWrapper = styled.div`
   flex: 1;
-  display: flex;
-  flex-direction: column;
+  display: block;
+  // flex-direction: column;
   gap: 1rem;
 `;
 
@@ -60,14 +61,19 @@ export default function App() {
           <Route
             path='/account'
             element={
-              <MapWrapper>
-                <Map
-                  onMarkerAdd={(marker) => setMarkers((p) => [...p, marker])}
-                />
-                <ButtonContainer>
-                  <Button onClick={handleConfirm}>Подтвердить</Button>
-                </ButtonContainer>
-              </MapWrapper>
+              <>
+                <Profile />
+                <MapWrapper>
+                  <Map
+                    onMarkerAdd={(marker) => setMarkers((p) => [...p, marker])}
+                  />
+                  <ButtonContainer className="centeralign">
+                    <Button className='confirmbtn' onClick={handleConfirm}>
+                      Подтвердить
+                    </Button>
+                  </ButtonContainer>
+                </MapWrapper>
+              </>
             }
           />
           <Route path='/settings' element={<Settings />} />
