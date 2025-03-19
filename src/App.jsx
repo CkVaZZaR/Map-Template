@@ -4,10 +4,10 @@ import styled from "styled-components";
 import Footer from "./components/Footer/Footer";
 import Home from "./components/Home/Home";
 import Map from "./components/Map/Map";
-import Account from "./components/Account/Account"; // Добавляем компонент аккаунта
 import Settings from "./components/Settings/Settings"; // Добавляем компонент настроек
 import Header from "./components/Header/Header";
 import Profile from "./components/Profile/Profile";
+import "./styles/themes.css";
 
 const Container = styled.div`
   padding: 1rem;
@@ -53,7 +53,7 @@ export default function App() {
   };
 
   return (
-    <Router>
+    <Router className='data-theme'>
       <Header />
       <Container>
         <Routes>
@@ -67,7 +67,7 @@ export default function App() {
                   <Map
                     onMarkerAdd={(marker) => setMarkers((p) => [...p, marker])}
                   />
-                  <ButtonContainer className="centeralign">
+                  <ButtonContainer className='centeralign'>
                     <Button className='confirmbtn' onClick={handleConfirm}>
                       Подтвердить
                     </Button>

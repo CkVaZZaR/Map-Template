@@ -1,0 +1,24 @@
+input {
+  color: var(--text-color);
+}
+
+.sidebar {
+  background: var(--card-color);
+}
+
+.sidebar h3 {
+  color: var(--text-color);
+}
+
+li span {
+  color: var(--text-color);
+}
+
+li {
+  color: var(--card-color);
+  border-color: var(--text-color) !important;
+}
+
+li:hover {
+  -webkit-tap-highlight-color: transparent;
+}

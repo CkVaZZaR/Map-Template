@@ -4,6 +4,7 @@ import "leaflet/dist/leaflet.css";
 import styled from "styled-components";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { debounce } from "lodash";
+import "./Map.css";
 
 delete leaflet.Icon.Default.prototype._getIconUrl;
 leaflet.Icon.Default.mergeOptions({
@@ -43,11 +44,9 @@ const Sidebar = styled.div`
   flex-direction: column;
   padding: 1rem;
   padding-left: 1rem;
-  background: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
-  background: rgb(240, 240, 240);
   gap: 1rem;
 
   @media (min-width: 768px) {
@@ -87,7 +86,7 @@ const SuggestionsList = styled.ul`
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   z-index: 1001;
   max-height: 300px;
-  height: 0px;
+  min-height: 0px;
   overflow-y: auto;
 `;
 
@@ -122,14 +121,9 @@ const MarkerItem = styled.li`
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background: #f8f9fa;
   border-radius: 8px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid;
   transition: background 0.2s;
-
-  &:hover {
-    background: #f1f1f1;
-  }
 `;
 
 const AddressText = styled.span`
@@ -377,7 +371,7 @@ export default function Map({ onMarkerAdd }) {
   return (
     <Wrapper>
       <div>
-        <SearchBar>
+        <SearchBar className='search-bar'>
           <SearchInput
             type='text'
             placeholder='Поиск адреса...'
@@ -387,7 +381,7 @@ export default function Map({ onMarkerAdd }) {
             onBlur={() => setTimeout(() => setIsSearchFocused(false), 200)}
           />
           {isSearchFocused && suggestions.length > 0 && (
-            <SuggestionsList>
+            <SuggestionsList className='suggestions-list'>
               {suggestions.map((suggestion) => (
                 <SuggestionItem
                   key={suggestion.place_id}
@@ -407,8 +401,8 @@ export default function Map({ onMarkerAdd }) {
         {error && <ErrorMessage>⚠️ {error}</ErrorMessage>}
       </div>
 
-      <Sidebar>
-        <h3 style={{ margin: "0", color: "#212121" }}>
+      <Sidebar className='sidebar'>
+        <h3 style={{ margin: "0" }}>
           Сохранённые места ({nearbyMarkers.length}/5)
         </h3>
         <LocateButton onClick={handleLocate}>Мое местоположение</LocateButton>

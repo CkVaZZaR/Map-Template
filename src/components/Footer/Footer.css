@@ -1,3 +1,26 @@
 .active {
-  color: #007bff !important;
+  color: var(--primary-color) !important;
+}
+
+footer {
+  background-color: var(--bg-color);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px solid #ccc;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.7s ease-in-out;
+}
+
+a {
+  color: var(--text-color);
+}
+
+a:hover {
+  -webkit-tap-highlight-color: transparent;
 }

@@ -9,6 +9,8 @@
 
 body {
   font-family: "Roboto", sans-serif;
+  background-color: var(--bg-color);
+  transition: all 0.7s ease-in-out;
 }
 
 .leaflet-container {

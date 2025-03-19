@@ -2,30 +2,6 @@ import { useEffect, useState } from "react";
 import Card from "../Card/Card";
 import "./CardContainer.css";
 
-// const profilesData = [
-//   {
-//     id: 1,
-//     name: "Анна",
-//     age: 25,
-//     bio: "Люблю путешествия и фотографию",
-//     photo: `https://picsum.photos/600/800?random=${Math.random()}`,
-//   },
-//   {
-//     id: 2,
-//     name: "Максим",
-//     age: 28,
-//     bio: "Фрилансер, увлекаюсь IT и спортом",
-//     photo: `https://picsum.photos/600/800?random=${Math.random()}`,
-//   },
-//   {
-//     id: 3,
-//     name: "Ольга",
-//     age: 23,
-//     bio: "Студентка, ищу интересные знакомства",
-//     photo: `https://picsum.photos/600/800?random=${Math.random()}`,
-//   },
-// ];
-
 export default function CardContainer() {
   const [profiles, setProfiles] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -49,7 +25,7 @@ export default function CardContainer() {
   if (currentIndex >= profiles.length) {
     return (
       <div className='container1'>
-        <h1>Больше анкет нет 😢</h1>
+        <h1>Поиск анкет...</h1>
       </div>
     );
   }

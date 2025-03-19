@@ -1,5 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
+import ThemeToggle from "../themeToggle/themeToggle";
 
 const Container = styled.div`
   padding: 1rem;
@@ -11,7 +12,7 @@ export default function Settings() {
     <Container>
       <h1>Настройки</h1>
       <br />
-      <p>Тут будут настройки приложения</p>
+      <ThemeToggle />
     </Container>
   );
 }
