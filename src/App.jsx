@@ -47,6 +47,7 @@ const Button = styled.button`
 
 export default function App() {
   const [markers, setMarkers] = useState([]);
+  const [tab, setTab] = useState("home");
 
   const handleConfirm = () => {
     console.log("Метки отправлены: " + JSON.stringify(markers));
@@ -57,9 +58,10 @@ export default function App() {
       <Header />
       <Container>
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Home />} onClick={() => setTab("home")} />
           <Route
             path='/account'
+            onClick={() => setTab("account")}
             element={
               <>
                 <Profile />
@@ -76,7 +78,7 @@ export default function App() {
               </>
             }
           />
-          <Route path='/settings' element={<Settings />} />
+          <Route path='/settings' element={<Settings />} onClick={() => setTab("settings")} />
         </Routes>
       </Container>
       <Footer />

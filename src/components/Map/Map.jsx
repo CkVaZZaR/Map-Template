@@ -64,7 +64,7 @@ const SearchBar = styled.div`
 const SearchInput = styled.input`
   width: 100%;
   padding: 1rem;
-  border: 2px solid #e0e0e0;
+  // border: 2px solid #e0e0e0;
   border-radius: 10px;
   font-size: 1rem;
   transition: all 0.2s;
@@ -383,7 +383,7 @@ export default function Map({ onMarkerAdd }) {
           {isSearchFocused && suggestions.length > 0 && (
             <SuggestionsList className='suggestions-list'>
               {suggestions.map((suggestion) => (
-                <SuggestionItem
+                <SuggestionItem className="suggestion-item"
                   key={suggestion.place_id}
                   onMouseDown={(e) => {
                     e.preventDefault();

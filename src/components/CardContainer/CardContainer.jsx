@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Card from "../Card/Card";
 import "./CardContainer.css";
+import { LuLoaderCircle } from "react-icons/lu";
 
 export default function CardContainer() {
   const [profiles, setProfiles] = useState([]);
@@ -23,9 +24,10 @@ export default function CardContainer() {
   };
 
   if (currentIndex >= profiles.length) {
+    // if (true) {
     return (
       <div className='container1'>
-        <h1>Поиск анкет...</h1>
+        <LuLoaderCircle className='loading-indicator' />
       </div>
     );
   }

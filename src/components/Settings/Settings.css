@@ -1,0 +1,14 @@
+.settings-punct {
+  margin-bottom: 2rem;
+  transition: all 0.7s ease-in-out;
+}
+
+.settings-punct h3 {
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  transition: all 0.7s ease-in-out;
+}
+
+.toggle-menu-item {
+  margin-bottom: 0.7rem;
+}

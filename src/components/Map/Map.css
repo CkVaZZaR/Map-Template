@@ -22,3 +22,25 @@ li {
 li:hover {
   -webkit-tap-highlight-color: transparent;
 }
+
+input {
+  background-color: var(--card-color);
+  color: var(--text-color);
+  border: 2px solid var(--text-color);
+
+  &:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+  }
+}
+
+.suggestions-list {
+  background-color: var(--card-color);
+  color: var(--text-color);
+}
+
+.suggestions-list li {
+  background-color: var(--card-color);
+  color: var(--text-color);
+}
