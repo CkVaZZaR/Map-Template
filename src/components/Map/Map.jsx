@@ -198,21 +198,6 @@ const ErrorMessage = styled.div`
   }
 `;
 
-const LocateButton = styled.button`
-  background: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 10px;
-  cursor: pointer;
-  width: 100%;
-  transition: background 0.2s;
-
-  &:hover {
-    background: #0069d9;
-  }
-`;
-
 export default function Map({ onMarkerAdd }) {
   const mapRef = useRef(null);
   const [error, setError] = useState("");
@@ -383,7 +368,8 @@ export default function Map({ onMarkerAdd }) {
           {isSearchFocused && suggestions.length > 0 && (
             <SuggestionsList className='suggestions-list'>
               {suggestions.map((suggestion) => (
-                <SuggestionItem className="suggestion-item"
+                <SuggestionItem
+                  className='suggestion-item'
                   key={suggestion.place_id}
                   onMouseDown={(e) => {
                     e.preventDefault();
@@ -397,7 +383,7 @@ export default function Map({ onMarkerAdd }) {
           )}
         </SearchBar>
 
-        <MapContainer id='map' />
+        <MapContainer className="map-container" id='map' />
         {error && <ErrorMessage>⚠️ {error}</ErrorMessage>}
       </div>
 
@@ -405,7 +391,9 @@ export default function Map({ onMarkerAdd }) {
         <h3 style={{ margin: "0" }}>
           Сохранённые места ({nearbyMarkers.length}/5)
         </h3>
-        <LocateButton onClick={handleLocate}>Мое местоположение</LocateButton>
+        <button className='locate-button' onClick={handleLocate}>
+          Мое местоположение
+        </button>
         <MarkersList>
           {nearbyMarkers.map((marker, index) => (
             <MarkerItem key={index}>

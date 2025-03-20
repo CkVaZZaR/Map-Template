@@ -44,3 +44,18 @@ input {
   background-color: var(--card-color);
   color: var(--text-color);
 }
+
+.locate-button {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.2s;
+}
+
+.map-container {
+  margin: 0;
+}

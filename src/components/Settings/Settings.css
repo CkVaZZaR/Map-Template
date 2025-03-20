@@ -5,6 +5,7 @@
 
 .settings-punct h3 {
   margin-bottom: 1rem;
+  text-align: center;
   color: var(--text-color);
   transition: all 0.7s ease-in-out;
 }

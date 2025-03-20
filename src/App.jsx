@@ -26,25 +26,6 @@ const MapWrapper = styled.div`
   gap: 1rem;
 `;
 
-const ButtonContainer = styled.div`
-  padding-left: 1rem;
-`;
-
-const Button = styled.button`
-  background: #f0f0f0;
-  color: black;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.2s, color 0.2s;
-
-  &:hover {
-    background-color: #007bff;
-    color: white;
-  }
-`;
-
 export default function App() {
   const [markers, setMarkers] = useState([]);
   const [tab, setTab] = useState("home");
@@ -55,33 +36,31 @@ export default function App() {
 
   return (
     <Router className='data-theme'>
-      <Header />
+      <Header active={tab} />
+
       <Container>
-        <Routes>
-          <Route path='/' element={<Home />} onClick={() => setTab("home")} />
-          <Route
-            path='/account'
-            onClick={() => setTab("account")}
-            element={
-              <>
-                <Profile />
-                <MapWrapper>
-                  <Map
-                    onMarkerAdd={(marker) => setMarkers((p) => [...p, marker])}
-                  />
-                  <ButtonContainer className='centeralign'>
-                    <Button className='confirmbtn' onClick={handleConfirm}>
-                      Подтвердить
-                    </Button>
-                  </ButtonContainer>
-                </MapWrapper>
-              </>
-            }
-          />
-          <Route path='/settings' element={<Settings />} onClick={() => setTab("settings")} />
-        </Routes>
+        {tab === "account" && (
+          <>
+            <Profile />
+            <MapWrapper>
+              <Map
+                onMarkerAdd={(marker) => setMarkers((p) => [...p, marker])}
+              />
+              <div className='centeralign'>
+                <button className='confirmbtn' onClick={handleConfirm}>
+                  Подтвердить
+                </button>
+              </div>
+            </MapWrapper>
+          </>
+        )}
+
+        {tab === "home" && <Home />}
+
+        {tab === "settings" && <Settings />}
       </Container>
-      <Footer />
+
+      <Footer active={tab} onChange={(current) => setTab(current)} />
     </Router>
   );
 }

@@ -16,7 +16,7 @@ export default function Settings() {
   const [theme, toggleTheme] = useTheme();
 
   return (
-    <Container>
+    <>
       <div className='settings-punct'>
         <h3>Внешний вид</h3>
         <SettingBar
@@ -41,6 +41,6 @@ export default function Settings() {
           icon={<AiOutlineQuestionCircle />}
         />
       </div>
-    </Container>
+    </>
   );
 }

@@ -10,31 +10,26 @@ const IconLink = styled(Link)`
   transition: color 0.5s;
 `;
 
-export default function Footer() {
-  const [tab, setTab] = useState("home");
-
+export default function Footer({ active, onChange }) {
   return (
     <footer className='footer'>
       <IconLink
-        onClick={(tab) => setTab("acc")}
-        className={tab === "acc" && "active"}
-        to='/account'
+        className={active === "account" ? "active" : ""}
+        onClick={() => onChange("account")}
       >
         <FaUser />
       </IconLink>
 
       <IconLink
-        onClick={(tab) => setTab("home")}
-        className={tab === "home" && "active"}
-        to='/'
+        className={active === "home" ? "active" : ""}
+        onClick={() => onChange("home")}
       >
         <FaClone />
       </IconLink>
 
       <IconLink
-        onClick={(tab) => setTab("settings")}
-        className={tab === "settings" && "active"}
-        to='/settings'
+        className={active === "settings" ? "active" : ""}
+        onClick={() => onChange("settings")}
       >
         <FaCog />
       </IconLink>
