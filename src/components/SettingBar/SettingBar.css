@@ -2,6 +2,7 @@
   --toggle-width: 44px;
   --toggle-height: 24px;
   --thumb-size: 20px;
+  --thumb-size-dis: 16px;
   --toggle-bg: var(--card-color);
   --toggle-checked-bg: var(--primary-color);
   --thumb-bg: #ffffff;
@@ -15,8 +16,7 @@
   cursor: pointer;
   transition: background-color 0.2s;
   user-select: none;
-  background-color: var(--background-color);
-  border: solid 1px var(--text-color);
+  background-color: var(--card-color);
   transition: all 0.7s ease-in-out;
 }
 
@@ -47,7 +47,7 @@
   width: var(--toggle-width);
   height: var(--toggle-height);
   border-radius: var(--toggle-height);
-  background-color: var(--toggle-bg);
+  background-color: var(--dark-color);
   transition: var(--transition);
 }
 
@@ -57,14 +57,21 @@
 
 .toggle-thumb {
   position: absolute;
-  top: 2px;
-  left: 2px;
-  width: var(--thumb-size);
-  height: var(--thumb-size);
+  top: 4px;
+  left: 4px;
+  width: var(--thumb-size-dis);
+  height: var(--thumb-size-dis);
   background-color: var(--thumb-bg);
   border-radius: 50%;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   transition: all 0.7s ease-in-out;
+}
+
+.checked .toggle-thumb {
+  top: 2px;
+  left: 2px;
+  width: var(--thumb-size);
+  height: var(--thumb-size);
 }
 
 .toggle-track.checked .toggle-thumb {

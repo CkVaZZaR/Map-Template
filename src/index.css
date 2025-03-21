@@ -22,6 +22,7 @@ body {
 
 .confirmbtn {
   margin: 1rem auto;
+  margin-bottom: 0;
   background: var(--card-color);
   color: var(--text-color);
   border: none;

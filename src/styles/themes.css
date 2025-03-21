@@ -5,6 +5,7 @@
   --secondary-color: #545ce3; */
   --primary-color: #545ce3;
   --card-color: #e2e2e2;
+  --dark-color: #b1b1b1;
 }
 
 [data-theme="dark"] {
@@ -12,4 +13,5 @@
   --text-color: #dfe3e6;
   --card-color: #303030;
   --primary-color: #4842da;
+  --dark-color: #252525;
 }

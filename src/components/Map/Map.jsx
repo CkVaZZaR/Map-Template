@@ -17,7 +17,7 @@ leaflet.Icon.Default.mergeOptions({
 const Wrapper = styled.div`
   flex: 1;
   display: grid;
-  gap: 1.5rem;
+  gap: 1rem;
   grid-template-columns: 1fr;
   min-height: 400px;
 
@@ -32,7 +32,7 @@ const MapContainer = styled.div`
   width: 100%;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  // box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: relative;
   min-height: 300px;
   z-index: 0;
@@ -45,7 +45,7 @@ const Sidebar = styled.div`
   padding: 1rem;
   padding-left: 1rem;
   border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  // box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
   gap: 1rem;
 
@@ -72,7 +72,7 @@ const SearchInput = styled.input`
   &:focus {
     outline: none;
     border-color: #2196f3;
-    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+    // box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
   }
 `;
 
@@ -83,7 +83,7 @@ const SuggestionsList = styled.ul`
   background: white;
   border: 2px solid #e0e0e0;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  // box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   z-index: 1001;
   max-height: 300px;
   min-height: 0px;
@@ -181,7 +181,7 @@ const ErrorMessage = styled.div`
   background: #ffebee;
   color: #d32f2f;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  // box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   animation: slideUp 0.3s ease-out;
   font-weight: 500;
   z-index: 1002;
@@ -383,7 +383,7 @@ export default function Map({ onMarkerAdd }) {
           )}
         </SearchBar>
 
-        <MapContainer className="map-container" id='map' />
+        <MapContainer className='map-container' id='map' />
         {error && <ErrorMessage>⚠️ {error}</ErrorMessage>}
       </div>
 
