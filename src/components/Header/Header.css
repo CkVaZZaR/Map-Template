@@ -3,12 +3,9 @@
   align-items: center;
   justify-content: center;
   padding: 0.5rem 0;
-  width: 100%;
   border-bottom: 1px solid #8585850e;
   background-color: var(--primary-color);
   transition: all 0.7s ease-in-out;
-  /* position: fixed; */
-  /* z-index: 1001; */
 }
 
 .header-logo {

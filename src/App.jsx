@@ -16,7 +16,7 @@ const Container = styled.div`
   min-height: calc(100vh - 60px);
   display: flex;
   flex-direction: column;
-  padding-bottom: 80px;
+  padding-bottom: 4rem;
 `;
 
 const MapWrapper = styled.div`

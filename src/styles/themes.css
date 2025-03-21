@@ -2,8 +2,8 @@
   --bg-color: #fff;
   --text-color: #1b1b1b;
   /* --primary-color: #4842da;
-  --secondary-color: #545ce3; */
-  --primary-color: #545ce3;
+  --secondary-color: #545ce4; */
+  --primary-color: #545ce4;
   --card-color: #e2e2e2;
   --dark-color: #b1b1b1;
 }
@@ -12,6 +12,7 @@
   --bg-color: #242424;
   --text-color: #dfe3e6;
   --card-color: #303030;
-  --primary-color: #4842da;
+  --primary-color: #4742da;
+  /* --primary-color: #da42d2; */
   --dark-color: #252525;
 }
