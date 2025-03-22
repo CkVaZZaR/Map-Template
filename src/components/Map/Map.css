@@ -45,6 +45,11 @@ input {
   color: var(--text-color);
 }
 
+.suggestions-list li:hover {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
 .locate-button {
   background: var(--primary-color);
   color: white;

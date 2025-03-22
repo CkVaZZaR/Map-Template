@@ -4,6 +4,7 @@ import "leaflet/dist/leaflet.css";
 import styled from "styled-components";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { debounce } from "lodash";
+import { FaSearchLocation } from "react-icons/fa";
 import "./Map.css";
 
 delete leaflet.Icon.Default.prototype._getIconUrl;
@@ -97,9 +98,9 @@ const SuggestionItem = styled.li`
   font-size: 0.95rem;
   color: #424242;
 
-  &:hover {
-    background: #f5f5f5;
-  }
+  // &:hover {
+  //   background: #f5f5f5;
+  // }
 
   &:not(:last-child) {
     border-bottom: 1px solid #eeeeee;
@@ -304,6 +305,7 @@ export default function Map({ onMarkerAdd }) {
   );
 
   const handleInputChange = (e) => {
+    setHasText(e.target.value.length > 0);
     setSearchQuery(e.target.value);
     fetchSuggestions(e.target.value);
   };
@@ -353,13 +355,25 @@ export default function Map({ onMarkerAdd }) {
     setExpandedMarkerIndex((prev) => (prev === index ? -1 : index));
   }, []);
 
+  const [hasText, setHasText] = useState(false);
+
   return (
     <Wrapper>
       <div>
         <SearchBar className='search-bar'>
+          {!hasText && (
+            <FaSearchLocation
+              style={{
+                position: "absolute",
+                top: "1.1rem",
+                left: "1.15rem",
+                color: "#757575",
+              }}
+            />
+          )}
           <SearchInput
             type='text'
-            placeholder='Поиск адреса...'
+            placeholder='      Поиск по адресу'
             value={searchQuery}
             onChange={handleInputChange}
             onFocus={() => setIsSearchFocused(true)}
