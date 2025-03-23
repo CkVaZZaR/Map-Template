@@ -6,6 +6,7 @@
   --primary-color: #545ce4;
   --card-color: #e2e2e2;
   --dark-color: #b1b1b1;
+  --footer-color: #ffffffef;
 }
 
 [data-theme="dark"] {
@@ -15,4 +16,5 @@
   --primary-color: #4742da;
   /* --primary-color: #da42d2; */
   --dark-color: #252525;
+  --footer-color: #242424ef;
 }

@@ -29,10 +29,18 @@ const MapWrapper = styled.div`
 export default function App() {
   const [markers, setMarkers] = useState([]);
   const [tab, setTab] = useState("home");
+  const [click, setClick] = useState(false);
 
   const handleConfirm = () => {
     console.log("Метки отправлены: " + JSON.stringify(markers));
   };
+
+  async function handleClick(current) {
+    setTab(current);
+    setClick(true);
+    await new Promise((resolve) => setTimeout(resolve, 1));
+    setClick(false);
+  }
 
   return (
     <Router className='data-theme'>
@@ -60,7 +68,11 @@ export default function App() {
         {tab === "settings" && <Settings />}
       </Container>
 
-      <Footer active={tab} onChange={(current) => setTab(current)} />
+      <Footer
+        active={tab}
+        onChange={(current) => handleClick(current)}
+        click={click}
+      />
     </Router>
   );
 }

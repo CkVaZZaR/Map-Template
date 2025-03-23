@@ -12,26 +12,32 @@ const IconLink = styled(Link)`
   // transition: color 0.5s;
 `;
 
-export default function Footer({ active, onChange }) {
+export default function Footer({ active, onChange, click }) {
   return (
     <footer className='footer'>
       <div className='footer-container'>
         <IconLink
-          className={active === "account" ? "active" : ""}
+          className={
+            (active === "account" ? "active" : "") + (click ? " clicked" : "")
+          }
           onClick={() => onChange("account")}
         >
           {active === "account" ? <FaUser /> : <FaRegUser />}
         </IconLink>
 
         <IconLink
-          className={active === "home" ? "active" : ""}
+          className={
+            (active === "home" ? "active" : "") + (click ? " clicked" : "")
+          }
           onClick={() => onChange("home")}
         >
           {active === "home" ? <FaClone /> : <FaRegClone />}
         </IconLink>
 
         <IconLink
-          className={active === "settings" ? "active" : ""}
+          className={
+            (active === "settings" ? "active" : "") + (click ? " clicked" : "")
+          }
           onClick={() => onChange("settings")}
         >
           {active === "settings" ? <BiSolidCog /> : <BiCog />}
