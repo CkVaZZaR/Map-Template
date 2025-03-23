@@ -78,3 +78,7 @@ input {
   border-bottom-left-radius: 0.7rem;
   border-bottom-right-radius: 0.7rem;
 }
+
+a:hover {
+  -webkit-tap-highlight-color: transparent;
+}
