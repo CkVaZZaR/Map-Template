@@ -6,7 +6,7 @@ export default function Profile() {
     <div className='profile'>
       <div className='profile-avatar-container'>
         <img
-          src={"https://picsum.photos/600/800?random=1"}
+          src={"https://thispersondoesnotexist.com/"}
           alt='Аватар'
           className='profile-avatar'
         />

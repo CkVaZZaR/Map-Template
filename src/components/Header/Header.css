@@ -6,6 +6,10 @@
   border-bottom: 1px solid #8585850e;
   background-color: var(--primary-color);
   transition: all 0.7s ease-in-out;
+  position: fixed;
+  width: 100%;
+  z-index: 1001;
+  top: 0;
 }
 
 .header-logo {

@@ -6,7 +6,10 @@
   --primary-color: #545ce4;
   --card-color: #e2e2e2;
   --dark-color: #b1b1b1;
-  --footer-color: #ffffffef;
+  --footer-color: #ffffffe7;
+  --header-color: #545be4e1;
+  --card-yes: #a0ff91;
+  --card-no: #ff5c50;
 }
 
 [data-theme="dark"] {
@@ -16,5 +19,7 @@
   --primary-color: #4742da;
   /* --primary-color: #da42d2; */
   --dark-color: #252525;
-  --footer-color: #242424ef;
+  --footer-color: #242424e7;
+  --card-yes: #407442;
+  --card-no: #9d3831;
 }

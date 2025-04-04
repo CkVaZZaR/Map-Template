@@ -13,7 +13,7 @@ const Container = styled.div`
   padding: 1rem;
   max-width: 1200px;
   margin: 0 auto;
-  min-height: calc(100vh - 60px);
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   padding-bottom: 4rem;
@@ -46,27 +46,29 @@ export default function App() {
     <Router className='data-theme'>
       <Header active={tab} />
 
-      <Container>
-        {tab === "account" && (
-          <>
-            <Profile />
-            <MapWrapper>
-              <Map
-                onMarkerAdd={(marker) => setMarkers((p) => [...p, marker])}
-              />
-              <div className='centeralign'>
-                <button className='confirmbtn' onClick={handleConfirm}>
-                  Подтвердить
-                </button>
-              </div>
-            </MapWrapper>
-          </>
-        )}
+      <div className='margin-top-3rem container-full'>
+        <Container className='margin-top-3rem'>
+          {tab === "account" && (
+            <>
+              <Profile />
+              <MapWrapper>
+                <Map
+                  onMarkerAdd={(marker) => setMarkers((p) => [...p, marker])}
+                />
+                <div className='centeralign'>
+                  <button className='confirmbtn' onClick={handleConfirm}>
+                    Подтвердить
+                  </button>
+                </div>
+              </MapWrapper>
+            </>
+          )}
 
-        {tab === "home" && <Home />}
+          {tab === "home" && <Home />}
 
-        {tab === "settings" && <Settings />}
-      </Container>
+          {tab === "settings" && <Settings />}
+        </Container>
+      </div>
 
       <Footer
         active={tab}

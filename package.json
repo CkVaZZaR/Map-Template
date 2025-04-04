@@ -26,6 +26,7 @@
     "react-loading-indicators": "^1.0.0",
     "react-router-dom": "^6.30.0",
     "react-swipeable": "^7.0.2",
+    "recharts": "^2.15.2",
     "styled-components": "^6.1.15",
     "typeface-lato": "^1.1.13"
   },

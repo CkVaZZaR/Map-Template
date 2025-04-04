@@ -66,19 +66,31 @@ input {
 }
 
 .leaflet-bar {
-  border-radius: 0.8rem;
+  border-radius: 0.7rem;
 }
 
 .leaflet-touch .leaflet-bar a:first-child {
   border-top-left-radius: 0.7rem;
   border-top-right-radius: 0.7rem;
+  align-items: center;
 }
 
 .leaflet-touch .leaflet-bar a:last-child {
   border-bottom-left-radius: 0.7rem;
   border-bottom-right-radius: 0.7rem;
+  align-items: center;
 }
 
 a:hover {
   -webkit-tap-highlight-color: transparent;
+}
+
+.leaflet-top.leaflet-left {
+  top: 40%;
+  right: 0;
+  left: auto;
+}
+
+.leaflet-control-zoom {
+  margin-right: 0.5rem;
 }

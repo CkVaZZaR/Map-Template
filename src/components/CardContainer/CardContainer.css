@@ -16,8 +16,16 @@
   animation: slideLeft 0.5s ease;
 }
 
+.slide-left .card {
+  background-color: var(--card-no);
+}
+
 .slide-right {
   animation: slideRight 0.5s ease;
+}
+
+.slide-right .card {
+  background-color: var(--card-yes);
 }
 
 @keyframes slideLeft {
