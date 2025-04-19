@@ -1,6 +1,7 @@
 .settings-punct {
   margin-bottom: 2rem;
   transition: all 0.7s ease-in-out;
+  text-align: center;
 }
 
 .settings-punct h3 {
@@ -33,6 +34,7 @@
 }
 
 .analytics-grid {
+  /* width: 100%; */
   display: grid;
   gap: 1rem;
   background-color: var(--bg-color);

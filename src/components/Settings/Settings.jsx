@@ -1,17 +1,19 @@
 import React from "react";
-import styled from "styled-components";
-import ThemeToggle from "../themeToggle/themeToggle";
 import SettingBar from "../SettingBar/SettingBar";
 import { FiMoon } from "react-icons/fi";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
 import useTheme from "../../hooks/useTheme";
 import { useState } from "react";
 import Modal from "../Modal/Modal";
-import Button from "../Button/Button";
 import "./Settings.css";
-import Analytics from "../Analytics/Analytics";
 import { IoMdCloseCircle } from "react-icons/io";
 import { TiChartPieOutline } from "react-icons/ti";
+import InputMenuItem from "../InputSetting/InputMenuItem";
+import { TbRating18Plus } from "react-icons/tb";
+import { FaPlusMinus } from "react-icons/fa6";
+import useLocalStorage from "../../hooks/useLocalStorage";
+import { PiGenderIntersex } from "react-icons/pi";
+import { PiGenderIntersexBold } from "react-icons/pi";
 
 import {
   BarChart,
@@ -25,11 +27,30 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import DropdownMenuItem from "../DropdownMenuItem/DropdownMenuItem";
 
 export default function Settings() {
   const [theme, toggleTheme] = useTheme();
   const [modal, setModal] = useState(false);
   const [click, setClick] = useState(false);
+  const [press, setPress] = useState(false);
+
+  const [formData, setFormData] = useLocalStorage({
+    age: "",
+    area: "",
+    sex: "a",
+  });
+
+  const handleChange = (fieldName) => (value) => {
+    setFormData((prev) => ({
+      ...prev,
+      [fieldName]: value,
+    }));
+  };
+
+  const getJsonData = () => {
+    console.log(JSON.stringify(formData, null, 2));
+  };
 
   const data = [
     { date: "2023-01", uv: 4000, pv: 2400 },
@@ -46,10 +67,23 @@ export default function Settings() {
     { product: "D", sales: 2780 },
   ];
 
+  const sexOptions = [
+    { value: "m", label: "Мужской" },
+    { value: "f", label: "Женский" },
+    { value: "a", label: "Любой" },
+  ];
+
   async function handleClick(current) {
     setModal(!current);
     setClick(true);
     await new Promise((resolve) => setTimeout(resolve, 1));
+    setClick(false);
+  }
+
+  async function handlePress() {
+    setClick(true);
+    console.log(click);
+    await new Promise((resolve1) => setTimeout(resolve1, 1));
     setClick(false);
   }
 
@@ -63,6 +97,34 @@ export default function Settings() {
           onChange={toggleTheme}
           initialChecked={theme === "dark"}
         />
+      </div>
+      <div className='settings-punct'>
+        <h3>Поиск</h3>
+        <InputMenuItem
+          label='Возраст'
+          icon={<TbRating18Plus />}
+          storageKey={"age"}
+          value={formData.age}
+          onChange={handleChange("age")}
+        />
+        <InputMenuItem
+          label='Область поиска'
+          icon={<FaPlusMinus />}
+          storageKey={"area"}
+          value={formData.area}
+          onChange={handleChange("area")}
+        />
+        <DropdownMenuItem
+          label='Пол'
+          value={formData.sex}
+          onChange={handleChange("sex")}
+          options={sexOptions}
+          icon={<PiGenderIntersexBold />}
+          click={press}
+        />
+        <button className='confirmbtn' onClick={getJsonData}>
+          Применить
+        </button>
       </div>
       <div className='settings-punct'>
         <h3>Остальные настройки</h3>
